@@ -2,14 +2,8 @@
 
 namespace RockPaperScissors1
 {
-    class Program
+    partial class Program
     {
-        public enum RpsChoice
-        {
-            Rock = 1,//equivalent to 0
-            Paper = 2,//equivalent to 1
-            Scissors = 3//equivalent to 2
-        }
 
         static void Main(string[] args)
         {
@@ -45,7 +39,7 @@ namespace RockPaperScissors1
             //kget a random number generator object
             Random rand = new Random();
             //get a random number 1,2, or 3.
-            int computerChoice = rand.Next(1, 4);
+            int computerChoice = rand.Next(1, Enum.GetNames(typeof(RpsChoice)).Length + 1);
 
             //print the choices.
             Console.WriteLine($"the players choice is {playerChoiceInt}");
@@ -57,6 +51,12 @@ namespace RockPaperScissors1
                 || (playerChoiceInt == 3 && computerChoice == 1)) Console.WriteLine("Computer Wins");
             else if (playerChoiceInt == computerChoice) Console.WriteLine("Tie Game!!");
             else Console.WriteLine("Player Wins!!!");
-        }
-    }
-}
+
+            //you can get typeDef the number to the equivalent RpsChoice Enum.
+            Console.WriteLine((RpsChoice)playerChoiceInt);
+            Console.WriteLine((RpsChoice)computerChoice);
+
+
+        }//end of main
+    }//end of class
+}//end of namespace
