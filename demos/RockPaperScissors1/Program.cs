@@ -57,6 +57,12 @@ namespace RockPaperScissors1
             Console.WriteLine((RpsChoice)computerChoice);
 
 
+            /*Coding challenge
+            1. implement a loop to play again if the player chooses to.
+            2. get the players name to print out the winners
+            3. implement the code to play 3 rounds.
+            */
+
         }//end of main
     }//end of class
 }//end of namespace
