@@ -7,24 +7,56 @@ namespace RockPaperScissors1
 
         static void Main(string[] args)
         {
-            Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
+
+            // PersonBaseClass personBaseClass1 = new PersonBaseClass();
+            // PersonBaseClass personBaseClass2 = new PersonBaseClass("Mark", "Moore");
+            // personBaseClass2.fname = "Jimmy";
+            //personBaseClass2.lname = Console.ReadLine();
+
+            // Console.WriteLine($"{personBaseClass1.fname} {personBaseClass1.lname} is default");
+            // Console.WriteLine($"{personBaseClass2.fname} {personBaseClass2.lname} is what I sent");
+
+            // PlayerDerivedClass playerDerivedClass1 = new PlayerDerivedClass();
+            // PlayerDerivedClass playerDerivedClass2 = new PlayerDerivedClass("", "");
+
+            //Console.WriteLine($"{playerDerivedClass1.fname} {playerDerivedClass1.lname} is default of PlayerDerivedClass");
+            // playerDerivedClass1.MyCountry = "'Merca";
+            //Console.WriteLine($"My country is => {playerDerivedClass1.MyCountry}");
+            // playerDerivedClass1.MyAge = 2;
+            //Console.WriteLine(playerDerivedClass1.MyAge);
+            //PlayerDerivedClass playerDerivedClass2 = new PlayerDerivedClass("", "");
+            // playerDerivedClass1.City = "Crowley";
+            // playerDerivedClass1.State = "Texas";
+            // playerDerivedClass1.Street = "123 Main St.";
+            // playerDerivedClass1.fname = "Mark";
+            // playerDerivedClass1.lname = "Moore";
+
+            // string fullAddress = playerDerivedClass1.GetFullAddress();
+            // Console.WriteLine(fullAddress);
+
+
+
+
+
+            //Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
+            RpsGame rpsGame = new RpsGame();
+            PlayerDerivedClass player1 = new PlayerDerivedClass();
+            PlayerDerivedClass computer = new PlayerDerivedClass("Max", "HeadRoom", 38);
+            Console.WriteLine(rpsGame.WelcomeMessage());
             bool successfulConversion = false;
             int playerChoiceInt;
-            //bool keepPlaying = true;
-            string player1;
             string quitter = "n";
 
             //get players info
             Console.WriteLine("Please enter your first name");
-            string fname = Console.ReadLine();
-            fname.Trim();
-            Console.WriteLine($"Whatsa haps, {fname}? Please enter your last name");
-            string lname = Console.ReadLine();
-            lname.Trim();
-            player1 = fname + ' ' + lname;
-
-
-
+            player1.Fname = rpsGame.getPlayerName(Console.ReadLine());
+            if (player1.Fname == null)
+            {
+                Console.WriteLine("\n\nreturned null\n\n");
+            }
+            Console.WriteLine($"Whatsa haps, {player1.Fname}? Please enter your last name");
+            player1.Lname = rpsGame.getPlayerName(Console.ReadLine());
+            Console.WriteLine($"Welcome to the gameZone, {player1.Fname} {player1.Lname}.");
 
             //play the game
             do
@@ -35,8 +67,8 @@ namespace RockPaperScissors1
                 int tieRounds = 0;
                 while (computerRoundWins < 2 && playerRoundWins < 2)
                 {
-
                     //a do/while loop runs at least once, while a while loop may not ever run.
+                    //gets the players choice
                     do
                     {
                         Console.WriteLine("1. Rock\n2. Paper\n3.Scissors");
@@ -65,7 +97,7 @@ namespace RockPaperScissors1
                     int computerChoice = rand.Next(1, Enum.GetNames(typeof(RpsChoice)).Length + 1);
 
                     //print the choices.
-                    Console.WriteLine($"the players choice is {(RpsChoice)playerChoiceInt}");
+                    Console.WriteLine($"{player1}'s choice is {(RpsChoice)playerChoiceInt}");
                     Console.WriteLine($"the computers choice is {(RpsChoice)computerChoice}");
 
                     //check who won.
@@ -74,7 +106,8 @@ namespace RockPaperScissors1
                          (playerChoiceInt == 3 && computerChoice == 1))
                     {
                         Console.WriteLine("Computer Wins this round");
-                        computerRoundWins++;
+                        // computerRoundWins++;
+                        computerRoundWins = computerRoundWins + 1;
                     }
                     else if (playerChoiceInt == computerChoice)
                     {
@@ -107,9 +140,10 @@ namespace RockPaperScissors1
                 {
                     Console.WriteLine($"Hey, {player1}. Would you like to play again?\n I'll keep asking till you answer me!!\n enter Y or N");
                     quitter = Console.ReadLine();
-                    quitter.Trim().ToLower();
+                    quitter = quitter.Trim().ToLower();
                     //Console.WriteLine($"The choice to play or not is => {quitter}");
-                } while (quitter.CompareTo("y") != 0 && quitter.CompareTo("n") != 0);
+                } //while (quitter.CompareTo("y") != 0 && quitter.CompareTo("n") != 0);
+                while (quitter != "y" && quitter != "n");
 
             } while (quitter == "y");
 
