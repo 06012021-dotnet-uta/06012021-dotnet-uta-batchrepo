@@ -2,7 +2,7 @@
 
 namespace RockPaperScissors1
 {
-    partial class Program
+    public class Program
     {
 
         static void Main(string[] args)
@@ -33,112 +33,94 @@ namespace RockPaperScissors1
 
             // string fullAddress = playerDerivedClass1.GetFullAddress();
             // Console.WriteLine(fullAddress);
-
-
-
-
-
-            //Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
-            RpsGame rpsGame = new RpsGame();
-            PlayerDerivedClass player1 = new PlayerDerivedClass();
-            PlayerDerivedClass computer = new PlayerDerivedClass("Max", "HeadRoom", 38);
-            Console.WriteLine(rpsGame.WelcomeMessage());
-            bool successfulConversion = false;
-            int playerChoiceInt;
             string quitter = "n";
 
-            //get players info
-            Console.WriteLine("Please enter your first name");
-            player1.Fname = rpsGame.getPlayerName(Console.ReadLine());
-            if (player1.Fname == null)
-            {
-                Console.WriteLine("\n\nreturned null\n\n");
-            }
-            Console.WriteLine($"Whatsa haps, {player1.Fname}? Please enter your last name");
-            player1.Lname = rpsGame.getPlayerName(Console.ReadLine());
-            Console.WriteLine($"Welcome to the gameZone, {player1.Fname} {player1.Lname}.");
-
-            //play the game
             do
             {
+                //Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
+                RpsGame rpsGame = new RpsGame();//create the game
+                PlayerDerivedClass player1 = new PlayerDerivedClass();//create an empty class for the player
+                PlayerDerivedClass computer = new PlayerDerivedClass("Max", "HeadRoom", 38);// create the computer
+                Game game = new Game();
+                game.Player1 = player1;
+                game.Player2 = computer;
+
+                //welcome players and set up the game
+                Console.WriteLine(rpsGame.WelcomeMessage());
+                bool successfulConversion = false;
+                int playerChoiceInt;
+
+
+                //get players info
+                string fn = null;
+                do
+                {
+                    Console.WriteLine("Please enter your first name");
+                    fn = rpsGame.getPlayerName(Console.ReadLine());
+                } while (fn == null);
+                game.Player1.Fname = fn;//set the first name
+
+                do
+                {
+                    Console.WriteLine($"Whatsa haps, {game.Player1.Fname}? Please enter your last name");
+                    fn = rpsGame.getPlayerName(Console.ReadLine());
+                } while (fn == null);
+                game.Player1.Lname = fn; //set the users last name
+
+                Console.WriteLine($"Welcome to the gameZone, {game.Player1.Fname} {game.Player1.Lname}.");
+
+                //play the game
                 //start first to 2 wins game here
-                int computerRoundWins = 0;
-                int playerRoundWins = 0;
-                int tieRounds = 0;
-                while (computerRoundWins < 2 && playerRoundWins < 2)
+                // int computerRoundWins = 0;
+                // int playerRoundWins = 0;
+                // int tieRounds = 0;
+                while (rpsGame.CalculateWinner(game) == 0)
                 {
                     //a do/while loop runs at least once, while a while loop may not ever run.
                     //gets the players choice
                     do
                     {
                         Console.WriteLine("1. Rock\n2. Paper\n3.Scissors");
-                        string playerChoice = Console.ReadLine();
+                        successfulConversion = rpsGame.GetUsersChoice(Console.ReadLine(), out playerChoiceInt);
+                        if (!successfulConversion)
+                            Console.WriteLine($"That is not a valid choice.");
+                    } while (!successfulConversion || !(playerChoiceInt > 0 && playerChoiceInt < 4));
 
-                        //create a int variable to catch the converted choice.
-                        successfulConversion = Int32.TryParse(playerChoice, out playerChoiceInt);
-
-                        //check if the user inputted a number but the numebr is out of bounds.
-                        if (playerChoiceInt > 3 || playerChoiceInt < 1)
-                            Console.WriteLine($"You inputted {playerChoiceInt}. That is not a valid choice.");
-                        else if (!successfulConversion)
-                            Console.WriteLine($"You inputted {playerChoice}. That is not a valid choice.");
-
-                    } //while (!successfulConversion || (playerChoiceInt < 1 || playerChoiceInt > 3));
-                    while (!successfulConversion || !(playerChoiceInt > 0 && playerChoiceInt < 4));//both of hte above are valid.
-
-                    //you can omit the {} if the body of hte statement is only 1 line or even put it all on one line.
-                    // if (successfulConversion == true) Console.WriteLine($"the conversion returned {successfulConversion} and the player chose {playerChoiceInt}");
-                    // else
-                    //     Console.WriteLine($"the conversion returned {successfulConversion} and the player chose {playerChoiceInt}");
-
-                    //get a random number generator object from the Random Class
-                    Random rand = new Random();
-                    //get a random number 1,2, or 3.
-                    int computerChoice = rand.Next(1, Enum.GetNames(typeof(RpsChoice)).Length + 1);
+                    //get the computers choice and assign player1's choice too
+                    game.Computer2RoundChoices.Add(rpsGame.GetComputerChoice());
+                    game.Player1RoundChoices.Add(playerChoiceInt);
 
                     //print the choices.
-                    Console.WriteLine($"{player1}'s choice is {(RpsChoice)playerChoiceInt}");
-                    Console.WriteLine($"the computers choice is {(RpsChoice)computerChoice}");
+                    Console.WriteLine($"{game.Player1.Fname} {game.Player1.Lname}'s choice is {(RpsChoice)game.Player1RoundChoices[game.Player1RoundChoices.Count - 1]}");
+                    Console.WriteLine($"{game.Player2.Fname} {game.Player2.Lname}'s choice is {(RpsChoice)game.Computer2RoundChoices[game.Computer2RoundChoices.Count - 1]}");
 
                     //check who won.
-                    if ((playerChoiceInt == 1 && computerChoice == 2) ||
-                         (playerChoiceInt == 2 && computerChoice == 3) ||
-                         (playerChoiceInt == 3 && computerChoice == 1))
+                    int roundWinner = rpsGame.EvaluteRoundWinner(game.Player1RoundChoices[game.Player1RoundChoices.Count - 1], game.Computer2RoundChoices[game.Computer2RoundChoices.Count - 1]);
+                    switch (roundWinner)
                     {
-                        Console.WriteLine("Computer Wins this round");
-                        // computerRoundWins++;
-                        computerRoundWins = computerRoundWins + 1;
+                        case 0:
+                            Console.WriteLine("This was a tie round");
+                            break;
+                        case 1:
+                            Console.WriteLine($"This round was won by {game.Player1.Fname} {game.Player1.Lname}");
+                            break;
+                        case 2:
+                            Console.WriteLine($"This round was won by {game.Player2.Fname} {game.Player2.Lname}");
+                            break;
+                        default:
+                            Console.WriteLine("There was a problem with the round evaluation");
+                            break;
                     }
-                    else if (playerChoiceInt == computerChoice)
-                    {
-                        Console.WriteLine("Tie Round!!");
-                        tieRounds++;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{player1} wins this round!!!");
-                        playerRoundWins++;
-                    }
-
-                    //you can get typeDef the number to the equivalent RpsChoice Enum.
-                    // Console.WriteLine((RpsChoice)playerChoiceInt);
-                    // Console.WriteLine((RpsChoice)computerChoice);
-
                 }//end of rounds
-
-                if (computerRoundWins == 2)
-                {
+                int winner = rpsGame.CalculateWinner(game);
+                if (winner == 2)
                     Console.WriteLine($"\n\tIt looks like the computer won this game. Better luck next time!\n");
-                }
-                else if (playerRoundWins == 2)
-                {
+                else if (winner == 1)
                     Console.WriteLine($"\n\tYou did it! You won against the computer!\n");
-                }
 
-                //see if the player wants to play again
-                do
+                do//see if the player wants to play again
                 {
-                    Console.WriteLine($"Hey, {player1}. Would you like to play again?\n I'll keep asking till you answer me!!\n enter Y or N");
+                    Console.WriteLine($"Hey, {game.Player1.Fname} {game.Player1.Lname}. Would you like to play again?\n I'll keep asking till you answer me!!\n enter Y or N");
                     quitter = Console.ReadLine();
                     quitter = quitter.Trim().ToLower();
                     //Console.WriteLine($"The choice to play or not is => {quitter}");

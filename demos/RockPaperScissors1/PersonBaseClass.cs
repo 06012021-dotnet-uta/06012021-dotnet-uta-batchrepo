@@ -13,11 +13,10 @@ namespace RockPaperScissors1
             }
             set
             {
-                if (value.Length > 20 || value.Length < 1)
+                if (value.Length < 20 && value.Length > 1)
                 {
-                    throw new InvalidOperationException("that fname is invalid");
+                    _fname = value;
                 }
-                _fname = value;
             }
         }
         private string _lname;
@@ -29,11 +28,10 @@ namespace RockPaperScissors1
             }
             set
             {
-                if (value.Length > 20 || value.Length < 1)
+                if (value.Length < 20 || value.Length > 1)
                 {
-                    throw new InvalidOperationException("that lname is invalid");
+                    _lname = value;
                 }
-                _lname = value;
             }
         }
         private string myCountry;
