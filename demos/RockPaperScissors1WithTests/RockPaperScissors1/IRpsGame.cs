@@ -8,5 +8,6 @@ namespace RockPaperScissors1
         int GetComputerChoice();
         int EvaluteRoundWinner(int x, int y);
         int CalculateWinner(Game g);
+        // int privateMethodTest();
     }
 }

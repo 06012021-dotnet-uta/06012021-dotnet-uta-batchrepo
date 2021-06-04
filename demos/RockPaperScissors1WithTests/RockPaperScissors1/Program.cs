@@ -7,7 +7,6 @@ namespace RockPaperScissors1
 
         static void Main(string[] args)
         {
-
             // PersonBaseClass personBaseClass1 = new PersonBaseClass();
             // PersonBaseClass personBaseClass2 = new PersonBaseClass("Mark", "Moore");
             // personBaseClass2.fname = "Jimmy";
@@ -38,7 +37,7 @@ namespace RockPaperScissors1
             do
             {
                 //Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
-                RpsGame rpsGame = new RpsGame();//create the game
+                RpsGame rpsGame = new RpsGame();//create the game.
                 PlayerDerivedClass player1 = new PlayerDerivedClass();//create an empty class for the player
                 PlayerDerivedClass computer = new PlayerDerivedClass("Max", "HeadRoom", 38);// create the computer
                 Game game = new Game();
@@ -49,10 +48,10 @@ namespace RockPaperScissors1
                 Console.WriteLine(rpsGame.WelcomeMessage());
                 bool successfulConversion = false;
                 int playerChoiceInt;
-
+                string fn = null;
 
                 //get players info
-                string fn = null;
+
                 do
                 {
                     Console.WriteLine("Please enter your first name");
