@@ -9,33 +9,27 @@ namespace RockPaperScissors1
         public string State { get; set; }
         public string City { get; set; }
 
-        private int myAge;
+        private int _myAge;
         public int MyAge
         {
             get
             {
-                return this.myAge;
+                return this._myAge;
             }
             set
             {
-                if (value > 125 || value < 1)
+                if (value < 125 || value > 0)
                 {
-                    throw new InvalidOperationException("that age value is too high.");
+                    _myAge = 0;
                 }
             }
         }
 
-        public PlayerDerivedClass() : base()
-        {
-            // this.fname = "derivedCLassfname";
-            // this.lname = "derivedClasslname";
-        }
+        public PlayerDerivedClass() : base() { }
 
         //I must create all overload constructors in derived classes
         public PlayerDerivedClass(string fname, string lname, int age = 0) : base(fname, lname)
         {
-            // this.fname = fname;
-            // this.lname = lname;
             this.MyAge = age;
         }
 
