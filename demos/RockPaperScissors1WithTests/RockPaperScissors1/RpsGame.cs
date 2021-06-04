@@ -12,6 +12,11 @@ namespace RockPaperScissors1
             return welcome;
         }
 
+        /// <summary>
+        /// this method will take the input from the user and verify that it is not null and not more that 20 chars
+        /// </summary>
+        /// <param name="playerInput"></param>
+        /// <returns></returns>
         public string getPlayerName(string playerInput)
         {
             //Console.WriteLine(playerInput);
@@ -36,7 +41,7 @@ namespace RockPaperScissors1
             return result;
         }
         /// <summary>
-        /// thie method gets the computers choice of rock,paper, or scissors
+        /// this method gets the computers choice of rock,paper, or scissors
         /// </summary>
         /// <returns></returns>
         public int GetComputerChoice()
@@ -99,6 +104,20 @@ namespace RockPaperScissors1
             else if (cpWins == 2)
                 return 2;
             return 0;
+        }
+
+        public int DoSomething()
+        {
+            int x = 5;
+            int y = 6;
+            int z = x + y;
+            return z;
+        }
+
+        //cant (as far as I know) test private methods
+        private int privateMethodTest()
+        {
+            return 5;
         }
     }//end of class
 }// end of namespace
