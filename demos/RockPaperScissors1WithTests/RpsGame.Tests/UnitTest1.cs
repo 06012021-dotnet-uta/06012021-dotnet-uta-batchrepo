@@ -50,5 +50,10 @@ namespace RpsGame.Tests
             Assert.Equal(2, result);
 
         }
+        [Fact]
+        pubic void nextTest()
+        {
+
+        }
     }//end of class
 }// end of namespace
