@@ -51,7 +51,7 @@ namespace RpsGame.Tests
 
         }
         [Fact]
-        pubic void nextTest()
+        public void nextTest()
         {
 
         }
