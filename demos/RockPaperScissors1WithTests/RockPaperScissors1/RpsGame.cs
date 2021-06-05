@@ -5,7 +5,6 @@ namespace RockPaperScissors1
     public class RpsGame : IRpsGame
     {
         Random rand = new Random();
-
         public string WelcomeMessage()
         {
             string welcome = "\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.";
