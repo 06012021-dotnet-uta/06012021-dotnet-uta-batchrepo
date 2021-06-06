@@ -7,6 +7,23 @@ namespace my_first_hello_world
         static int myNum1 = 5;
         static void Main(string[] args)
         {
+            //an interesting way to show comparison adn assignment with if()
+            bool b1 = 1 < 0;
+            bool b2 = !(12 % 3 > 2);
+            if (b1 = b2)
+                Console.Write("true: ");
+            else
+                Console.Write("false: ");
+            Console.WriteLine("b1 is {0}.  b2 is {1}.", b1, b2);
+
+            bool b11 = 1 < 0;
+            bool b22 = !(12 % 3 > 2);
+            if (b1 = b2)
+                Console.Write("true: ");
+            else
+                Console.Write("false: ");
+            Console.WriteLine("b1 is {0}.  b2 is {1}.", b11, b22);
+
             Console.WriteLine("What's that. It's so cringe!");
             string myString = Console.ReadLine();
             Console.WriteLine(myString.ToUpper());
