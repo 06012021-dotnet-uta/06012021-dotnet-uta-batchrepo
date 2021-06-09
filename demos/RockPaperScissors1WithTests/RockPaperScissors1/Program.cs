@@ -4,9 +4,31 @@ namespace RockPaperScissors1
 {
     public class Program
     {
+        // create a project for DbContext
+        // download these packages => EFCore.SqlServer, .design, .tools
+        // Scaffold-DbContext -Provider Microsoft.EntityFrameworkCore.SqlServer -Connection "Server=localhost\SQLEXPRESS04;Database=RpsGameDb;Trusted_Connection=True;"
+        // demo the context
+        // create matching classes as needed
 
         static void Main(string[] args)
         {
+            //RpsGameDbContext context = new RpsGameDbContext();
+            // var choices = context.Choices.ToList();
+
+            // foreach (var c in choices)
+            // {
+            // 	Console.WriteLine($"the choice is {c.ChoiceValue}");
+
+            // }
+
+            // var result = context.Players.FromSqlRaw($"SELECT * FROM Players").ToList();
+            // //var result = context.FromSqlRaw("SELECT * FROM Players");
+
+            // foreach (var x in result)
+            // {
+            // 	Console.WriteLine($"The result is {x.PlayerFname} {x.PlayerLname}");
+            // }
+
             // PersonBaseClass personBaseClass1 = new PersonBaseClass();
             // PersonBaseClass personBaseClass2 = new PersonBaseClass("Mark", "Moore");
             // personBaseClass2.fname = "Jimmy";
