@@ -4,7 +4,7 @@
 --SELECT * from Orders;
 
 --Get all customers with this address city (RIGHT JOIN)
-SELECT FirstName, LastName, Addresses.City, Addresses.AddressLine1, Addresses.Addressid
+SELECT FirstName, LastName, Addresses.City, Addresses.AddressLine1, Addresses.AddressLine2, Addresses.Addressid
 FROM Customers
 RIGHT JOIN Addresses 
 ON Customers.AddressID = Addresses.Addressid
@@ -20,7 +20,8 @@ WHERE Addresses.AddressLine1 != '444 Main''s St.'
 ORDER BY LastName;
 
 --Get all customers with addresses (INNER JOIN)
-SELECT FirstName, LastName, Addresses.City
+--SELECT FirstName, LastName, Addresses.AddressLine1,Addresses.AddressLine2,Addresses.City
+SELECT* 
 FROM Customers
 INNER JOIN Addresses 
 ON Customers.AddressID = Addresses.Addressid
