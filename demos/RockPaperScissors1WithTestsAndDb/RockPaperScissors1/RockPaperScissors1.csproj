@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RpsDbContext\RpsDbContext.csproj" />
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,7 @@ namespace RpsDbContext
         public string City { get; set; }
         public string State { get; set; }
         public DateTime? DateAdded { get; set; }
+        public int? TestValue { get; set; }
 
         public virtual ICollection<Game> GameGameWinnerNavigations { get; set; }
         public virtual ICollection<Game> GamePlayer1Navigations { get; set; }

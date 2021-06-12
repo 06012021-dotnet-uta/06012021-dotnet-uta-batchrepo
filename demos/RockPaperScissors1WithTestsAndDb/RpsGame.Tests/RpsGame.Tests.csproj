@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RockPaperScissors1\RockPaperScissors1.csproj" />
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\RpsDbContext\RpsDbContext.csproj" />
+    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
   </ItemGroup>
 
 </Project>

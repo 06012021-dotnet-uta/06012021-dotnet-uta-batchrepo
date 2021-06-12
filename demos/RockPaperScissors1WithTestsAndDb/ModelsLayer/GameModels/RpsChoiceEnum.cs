@@ -1,4 +1,4 @@
-namespace RockPaperScissors1
+namespace GameModels
 {
     //an enum is a custom data type that you decide the types for.
     public enum RpsChoice

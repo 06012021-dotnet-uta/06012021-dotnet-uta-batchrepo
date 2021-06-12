@@ -1,4 +1,6 @@
-namespace RockPaperScissors1
+using GameModels;
+
+namespace BusinessLayer
 {
     public interface IRpsGame
     {

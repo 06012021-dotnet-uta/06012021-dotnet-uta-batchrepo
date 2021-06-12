@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RpsGame.Tests", "..\RpsGame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpsDbContext", "..\RpsDbContext\RpsDbContext.csproj", "{00E3A8C9-B619-4141-B31C-BE20F5C4C261}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsLayer", "..\ModelsLayer\ModelsLayer.csproj", "{6E484AAA-CCC9-43F4-8B7E-918F57A97850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "..\BusinessLayer\BusinessLayer.csproj", "{8C5107B5-B36B-4DED-9A4D-0EF23B8A11A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{00E3A8C9-B619-4141-B31C-BE20F5C4C261}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00E3A8C9-B619-4141-B31C-BE20F5C4C261}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00E3A8C9-B619-4141-B31C-BE20F5C4C261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E484AAA-CCC9-43F4-8B7E-918F57A97850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E484AAA-CCC9-43F4-8B7E-918F57A97850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E484AAA-CCC9-43F4-8B7E-918F57A97850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E484AAA-CCC9-43F4-8B7E-918F57A97850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5107B5-B36B-4DED-9A4D-0EF23B8A11A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5107B5-B36B-4DED-9A4D-0EF23B8A11A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5107B5-B36B-4DED-9A4D-0EF23B8A11A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5107B5-B36B-4DED-9A4D-0EF23B8A11A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

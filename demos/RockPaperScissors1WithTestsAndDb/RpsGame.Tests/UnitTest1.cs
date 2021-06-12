@@ -1,10 +1,45 @@
 using System;
 using Xunit;
 using RockPaperScissors1;
-
+using BusinessLayer;
+using GameModels;
 
 namespace RpsGame.Tests
 {
+    public class MockRpsGame : IRpsGame
+    {
+        public int CalculateWinner(Game g)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int EvaluteRoundWinner(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetComputerChoice()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string getPlayerName(string x)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetUsersChoice(string x, out int y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string WelcomeMessage()
+        {
+            return "Congrats you successfully called the method";
+        }
+    }
+
+
     public class UnitTest1
     {
         [Fact]
@@ -25,13 +60,14 @@ namespace RpsGame.Tests
         public void WelcomeMessageReturnsCorrectMessage()
         {
             //Arrange
-            IRpsGame game = new RockPaperScissors1.RpsGame();
+            // mock the RpsGame class toisolate the method I want to test and substitute en expected return
+            IRpsGame game = new MockRpsGame();
 
             //Act
             string welcomeMessageTest = game.WelcomeMessage();
 
             //Assert
-            Assert.Equal("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.", welcomeMessageTest);
+            Assert.Equal("Congrats you successfully called the method", welcomeMessageTest);
         }
 
         [Theory]
@@ -41,7 +77,7 @@ namespace RpsGame.Tests
         public void EvaluteRoundWinnerRetunsCorrectWinner(int a, int b)
         {
             //Arrange
-            IRpsGame game = new RockPaperScissors1.RpsGame();
+            IRpsGame game = new BusinessLayer.RpsGame();
 
             //Act
             int result = game.EvaluteRoundWinner(a, b);
