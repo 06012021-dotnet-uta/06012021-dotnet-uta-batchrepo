@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using RpsDbContext;
+using BusinessLayer;
+using GameModels;
 
 namespace RockPaperScissors1
 {
@@ -15,7 +16,7 @@ namespace RockPaperScissors1
 
         static void Main(string[] args)
         {
-            RpsGameDbContext context = new RpsGameDbContext();
+            //RpsGameDbContext context = new RpsGameDbContext();
             //to createa  join in FECOre context,
             // use the .Iclude(<virtualPropertyNameFromEfModel>)
             // var result = context.Rounds.Include(b => b.Player1ChoiceNavigation).ToList();
@@ -82,7 +83,7 @@ namespace RockPaperScissors1
             do
             {
                 //Console.WriteLine("\tWelcome to Rock-Paper-Scissors!\n\nPlease make a choice.");
-                RpsGame rpsGame = new RpsGame(context);//create the game.
+                BusinessLayer.RpsGame rpsGame = new BusinessLayer.RpsGame();//create the game.
                 PlayerDerivedClass player1 = new PlayerDerivedClass();//create an empty class for the player
                 PlayerDerivedClass computer = new PlayerDerivedClass("Max", "HeadRoom", 38);// create the computer
                 Game game = new Game();
@@ -157,7 +158,7 @@ namespace RockPaperScissors1
                     }
                 }//end of rounds
                 int winner = rpsGame.CalculateWinner(game);
-                bool gameSaved = rpsGame.SaveGame(game);
+                //bool gameSaved = rpsGame.SaveGame(game);// UNCOMMENT TO FINISH CONTEXT COMMUNICATIONS
                 if (winner == 2)
                     Console.WriteLine($"\n\tIt looks like the computer won this game. Better luck next time!\n");
                 else if (winner == 1)

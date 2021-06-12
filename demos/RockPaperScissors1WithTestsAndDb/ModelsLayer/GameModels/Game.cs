@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RockPaperScissors1
+namespace GameModels
 {
     public class Game
     {

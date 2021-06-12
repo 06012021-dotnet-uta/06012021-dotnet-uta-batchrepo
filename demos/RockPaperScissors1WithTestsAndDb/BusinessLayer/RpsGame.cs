@@ -1,19 +1,19 @@
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using RpsDbContext;
+using GameModels;
 
-namespace RockPaperScissors1
+namespace BusinessLayer
 {
     public class RpsGame : IRpsGame
     {
         Random rand = new Random();
         private RpsGameDbContext _context;
 
-        public RpsGame() { }
-        public RpsGame(RpsGameDbContext context)
+
+        public RpsGame()
         {
-            this._context = context;
+            this._context = new RpsGameDbContext();
         }
 
 
@@ -109,7 +109,7 @@ namespace RockPaperScissors1
         /// 1 == player1 wins
         /// 2 == computer wins
         /// </summary>
-        public int CalculateWinner(Game g)
+        public int CalculateWinner(GameModels.Game g)
         {
             int p1Wins = 0;
             int cpWins = 0;
@@ -152,29 +152,28 @@ namespace RockPaperScissors1
             return 5;
         }
 
+        // public async Task<bool> SaveGame(Game game)
+        // {
 
-        public async Task<bool> SaveGame(Game game)
-        {
-
-            // add the players to the Db First
-            //1. map the player to a EF Player Model
-            Player p1 = MapperClassAppToDb.AppPlayerToDbPlayer(game.Player1);
-            await _context.AddAsync(p1);
-            var dbPlayer1 = _context.Players.Last();
-
-
-            Player p2 = MapperClassAppToDb.AppPlayerToDbPlayer(game.Player2);
-            await _context.AddAsync(p2);
-            var dbPlayer2 = _context.Players.Last();
-            //_context.SaveChanges();
-
-            // add the Game to the Db
-            RpsDbContext.Game g = MapperClassAppToDb.AppGameToDbGame(game, dbPlayer1.PlayerId, dbPlayer2.PlayerId);
-
-            //add the rounds to the Db
+        //     // add the players to the Db First
+        //     //1. map the player to a EF Player Model
+        //     Player p1 = MapperClassAppToDb.AppPlayerToDbPlayer(game.Player1);
+        //     await _context.AddAsync(p1);
+        //     var dbPlayer1 = _context.Players.Last();
 
 
-            return true;
-        }
-    }//end of class
-}// end of namespace
+        //     Player p2 = MapperClassAppToDb.AppPlayerToDbPlayer(game.Player2);
+        //     await _context.AddAsync(p2);
+        //     var dbPlayer2 = _context.Players.Last();
+        //     //_context.SaveChanges();
+
+        //     // add the Game to the Db
+        //     RpsDbContext.Game g = MapperClassAppToDb.AppGameToDbGame(game, dbPlayer1.PlayerId, dbPlayer2.PlayerId);
+
+        //     //add the rounds to the Db
+
+
+        //     return true;
+        // }
+    }
+}

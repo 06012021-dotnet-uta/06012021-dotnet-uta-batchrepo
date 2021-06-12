@@ -1,6 +1,6 @@
 using System;
 
-namespace RockPaperScissors1
+namespace GameModels
 {
     public class PersonBaseClass
     {
