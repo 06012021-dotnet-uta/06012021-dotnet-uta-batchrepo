@@ -1,7 +1,6 @@
 .cssdemo{
-  background-color: pink;
-  width: 150px;
-  padding:25px;
-  border: 50px solid green;
-  margin: 5px 150px, 100, 50;
+  width: 150;
+  border-style: solid;
+  border-color: red;
+  border-width: 100px 25px;
 }
