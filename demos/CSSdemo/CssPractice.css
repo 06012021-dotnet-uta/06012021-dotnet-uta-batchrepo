@@ -1,0 +1,6 @@
+.cssdemo{
+  width: 150;
+  border-style: solid;
+  border-color: red;
+  border-width: 100px 25px;
+}
