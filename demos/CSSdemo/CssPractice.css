@@ -4,3 +4,90 @@
   border-color: red;
   border-width: 100px 25px;
 }
+
+div {
+  background-color: #52f7f7;
+  width: 150;
+}
+
+.class1, .class2{
+  border: 15px dotted blue ;
+  width: 100;
+}
+
+#id1{
+  /* color: aquamarine; */
+  /*you can force an element to inherit the stuyling of it's parent.*/
+  display: inherit;
+}
+
+/* select everything on the doc */
+/* *{
+  background-color: burlywood;
+} */
+
+.class3:active{
+color:white;
+background-color: black;
+}
+
+.class4:hover{
+  color:white;
+background-color: black;
+width:100;
+}
+
+a:visited{
+  color:pink;
+}
+
+/* get the first gen descendent of an element and change it on hover*/
+div>sub:hover{
+  background-color: pink;
+}
+
+.class5::first-letter{
+  color:brown;
+  font-variant: small-caps;
+  font-style: italic;
+}
+
+ul+ol{
+  background-color: aquamarine;
+  border: 15px;
+}
+/* style an element with a more specific 
+ruleset to pervent later stylings form 
+changing it */
+#id2{
+  border: solid pink;
+}
+form~p{
+  color: aqua;
+  /* user !important to override all other
+   stylings before or after this styling */
+  border: dashed black !important;
+  border-width: 15px 10px 5px 1px;
+  /* border-color: black; /*you can only stule all four sides at ones with this*/
+  /*border-width: 50px 30px 20px 10px; */
+  /* outline-width: 10px; */
+}
+
+#myPic{
+  position: sticky;
+  top: 80px;
+  right: 0;
+  width: 80px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+
+#boxModelId{
+  background-color: grey;
+  width: 150;
+  border: 15px solid green;
+  margin: 20px 50px 100px;
+  padding: 50px;
+  text-align: center;
+  text-shadow: #52f7f7;
+}

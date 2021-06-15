@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Html Practice</title>
+  <!-- add the relative path to the stylesheet (.css) -->
   <link rel="stylesheet" href="CssPractice.css">
 </head>
 
@@ -12,14 +13,15 @@
   Hello, I am an <span style="border-inline-style: dashed; color:red">unformated</span> sentence.<br>
   and I am another!!
   <br>
-  <ins>inserted text</ins>
-  <br>
-  <sup>superscript text</sup>
-  <br>
-  <sub>subscript text </sub>
-  <br>
-  <small>small text</small>
-
+  <div>
+    <ins>inserted text</ins>
+    <br>
+    <sup>superscript <sub>this is a grandchild sub</sub> text</sup>
+    <br>
+    <sub>subscript text </sub>
+    <br>
+    <small>small text</small>
+  </div>
   <!-- paragraph tag (element) -->
   <p class="paraClass" id="paraId" title="Paragraph Title">This is a paragraph</p>
 
@@ -27,15 +29,17 @@
   <div>
     <h1 class="cssdemo">this is h1</h1>
   </div>
-  <h2>this is h2</h2>
-  <h3>this is h3</h3>
-  <h4>this is h4</h4>
-  <h5>this is h5</h5>
+  <h2 class="class1">this is h2</h2>
+  <span class="class2">
+    <h3 id="id1">this is h3</h3>
+  </span>
+  <h4 class="class3">this is h4</h4>
+  <h5 class="class4">this is h5</h5>
   <h6>this is h6</h6>
 
   <!-- attach an image -->
-  <img src="C:\\Users\\MarkC\\Pictures\\Saved\ Pictures\\MooresInGlasses.jpg" alt="">
-  <img src="images/MooresInGlasses.jpg" alt="The image is not found." style="height: 100px;">
+  <!-- <img id="myPic" src="C:\\Users\\MarkC\\Pictures\\Saved\ Pictures\\MooresInGlasses.jpg" alt=""> -->
+  <img id="myPic" src="images/MooresInGlasses.jpg" alt="The image is not found." style="height: 100px;">
 
   <!-- unordered list has bullter -->
   <ul>
@@ -43,6 +47,7 @@
     <li>this is another list element</li>
   </ul>
 
+  <!-- <p>this is an interruptor paragraph.</p> -->
   <!-- ordered list has numbers -->
   <ol>
     <li>this is the first list element</li>
@@ -134,12 +139,13 @@
   <a href="http://www.revature.com" target="blank">Go visit revature to apply!</a>
 
   Now I want to use some symbols!
-  <p>Here is a &lt; in the middle of the sentence</p><br>
+  <p class="class5">Here is a &lt; in the middle of the sentence</p><br>
   <p>&commat;</p><br>
-  <p>this is a non-braeaking space => &nbsp; <=...< /p><br>
-      <p>this is a hex coded back arrow &#x2190;</p>
+  <p>this is a non-breaking space => &nbsp; <=... </p><br>
+      <p id="id2">this is a hex coded back arrow &#x2190;</p>
       <p>and a forward arrow &#8594;</p>
 
+      <div id="boxModelId">this is the box model div</div>
 
 </body>
 
