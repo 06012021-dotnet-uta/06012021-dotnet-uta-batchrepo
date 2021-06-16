@@ -8,7 +8,7 @@ namespace RpsGame.Tests
 {
     public class MockRpsGame : IRpsGame
     {
-        public int CalculateWinner(Game g)
+        public int CalculateWinner(GameModel g)
         {
             throw new NotImplementedException();
         }
