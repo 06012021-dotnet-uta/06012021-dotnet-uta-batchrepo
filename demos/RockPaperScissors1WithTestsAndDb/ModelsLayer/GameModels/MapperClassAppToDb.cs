@@ -20,15 +20,15 @@ namespace GameModels
             return p;
         }
 
-        // public static RpsDbContext.Game AppGameToDbGame(Game game, int p1, int p2)
-        // {
-        //     RpsDbContext.Game g = new RpsDbContext.Game()
-        //     {
-        //         Player1 = p1,
-        //         Player2 = p2,
-        //         GameWinner =
-
-        //     };
-        // }
+        public static RpsDbContext.Game AppGameToDbGame(GameModel game, int p1, int p2)
+        {
+            RpsDbContext.Game g = new RpsDbContext.Game()
+            {
+                Player1 = p1,
+                Player2 = p2,
+                //GameWinner = calculate winner in the RpsGameClass
+            };
+            return g;
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace BusinessLayer
         bool GetUsersChoice(string x, out int y);
         int GetComputerChoice();
         int EvaluteRoundWinner(int x, int y);
-        int CalculateWinner(Game g);
+        int CalculateWinner(GameModel g);
         // int privateMethodTest();
     }
 }
