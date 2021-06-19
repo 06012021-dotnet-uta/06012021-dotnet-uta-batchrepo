@@ -1,0 +1,16 @@
+﻿
+@{
+	ViewData["Title"] = "LoggedInLandingPage";
+}
+
+
+<p>@ViewData["Title"]</p>
+
+<h1>@ViewData["Welcome"]</h1>
+
+@*buttons to view a player list and to play his first game.*@
+
+<div>
+	<button class="btn-light"><a class="btn" asp-area="" asp-controller="Game" asp-action="PlayGame">Create an Account</a></button>
+	<button class="btn-light"><a class="btn" asp-area="" asp-controller="Game" asp-action="PlayerList">See The Player List!</a></button>
+</div>
