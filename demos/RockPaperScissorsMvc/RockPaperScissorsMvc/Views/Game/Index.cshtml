@@ -1,0 +1,30 @@
+﻿@model RockPaperScissorsMvc.Models.Player
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div>
+	<h4>Player</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Fname)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Fname)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Lname)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Lname)
+		</dd>
+	</dl>
+</div>
+<div>
+	@Html.ActionLink("Edit", "Edit", new { Fname = Model.Fname }) |
+	<a asp-action="Index">Back to List</a>
+</div>
