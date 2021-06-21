@@ -74,6 +74,7 @@ namespace RockPaperScissorsMvc.Controllers
 				RedirectToAction("Create");
 			}
 
+			// injecting the interface allows you to Mock the implementation in the testing suite.
 			bool myBool = await _rpsGame.RegisterPlayerAsync(p);
 
 			if (myBool)
