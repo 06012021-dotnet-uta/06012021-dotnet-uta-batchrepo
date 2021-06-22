@@ -17,25 +17,58 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+stages:
+- stage:
+  jobs:
+  - job:
 # yaml file have stages, steps, jobs, and tasks.
-steps:
-  - task: NuGetToolInstaller@1
+    steps:
+      - task: NuGetToolInstaller@1
 
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
 
-  - task: VSBuild@1
-    inputs:
-      solution: '$(solution)'
-      msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: VSBuild@1
+        inputs:
+          solution: '$(solution)'
+          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
 
-  - task: VSTest@2
-    inputs:
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: VSTest@2
+        inputs:
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
+      - script: echo "this is a message"
 
-  - script: echo "this is a message"
+- stage:
+  displayName: Stage1
+  dependsOn: []
+  jobs:
+    - job:
+      steps:
+      - script: echo this is stage 1 The buildCongiuration is $(buildConfiguration).
+    - job:
+      steps:
+      - script: echo this is the second job for the first stage
+
+- stage: stagesName
+  displayName: Stage2
+  dependsOn: []
+  jobs:
+  - job:
+    steps:
+    - script: echo this is stage2
+
+- stage:
+  displayName: Stage3
+  dependsOn: []
+  jobs:
+  - job:
+    steps:
+    - script: echo this is stage3
+  - job:
+    steps:
+    - script: echo this is the last job of the last stage
 
