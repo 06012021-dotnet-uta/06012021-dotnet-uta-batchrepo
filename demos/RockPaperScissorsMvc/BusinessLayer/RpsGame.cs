@@ -11,7 +11,7 @@ namespace BusinessLayer
 {
 	public class RpsGame : IRpsGame
 	{
-			//SIDEBAR//
+		//SIDEBAR//
 		/*EXAMPLE*/
 		//parentClass pc = new ChildClass();
 		//childClass cc = (childClass)pc;// type define the parent class variable as a child class.
