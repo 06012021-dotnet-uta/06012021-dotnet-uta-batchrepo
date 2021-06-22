@@ -46,8 +46,8 @@ namespace RockPaperScissorsMvc.Controllers
 		// GET: GameController/Create - sthis is conventional routing.
 		public ActionResult Create()
 		{
-			_logger.LogInformation("\n\nINFORMATION - We are in the Create Method - Weeeeee!\n\n");
-			_logger.LogError("\n\nERROR - We are in the Create Method - Weeeeee!\n\n");
+			//_logger.LogInformation("\n\nINFORMATION - We are in the Create Method - Weeeeee!\n\n");
+			//_logger.LogError("\n\nERROR - We are in the Create Method - Weeeeee!\n\n");
 			//_logger.LogDebug("\n\nERROR - We are in the Create Method - Weeeeee!\n\n");
 			return View("CreatePlayer");
 		}
