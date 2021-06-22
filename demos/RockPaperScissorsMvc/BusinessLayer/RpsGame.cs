@@ -19,8 +19,6 @@ namespace BusinessLayer
 		 * the parent variable only gives the user acces to the parent methods.
 		*/
 
-		//this is a ramdom change
-
 
 		private readonly RpsGameDb _context;
 		// create constructors.
