@@ -11,7 +11,7 @@ trigger:
 #the below is required only if you have multiple .sln files in your repo.
   paths:
     include:
-    - demos/RockPaperScissorsMvc/RockPaperScissorsMvc
+    - demos/RockPaperScissorsMvc
 
 #a resource on which you will build your app
 pool:
