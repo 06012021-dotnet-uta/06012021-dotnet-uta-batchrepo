@@ -31,7 +31,7 @@ namespace RockPaperScissorsMvc
 			{
 				if (!options.IsConfigured)
 				{
-					options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+					options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
 				}
 			});
 			services.AddScoped<IRpsGame, RpsGame>();
