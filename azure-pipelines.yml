@@ -71,7 +71,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: '$(solution))'
+    projects: '$(solution)'
     zipAfterPublish: true
 
 - task: AzureRmWebAppDeployment@4
