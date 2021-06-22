@@ -6,6 +6,8 @@
 #a trigger can be set for a specific branch or file.
 trigger:
 - main
+pr:
+- main
 
 #a resource on which you will build your app
 pool:
