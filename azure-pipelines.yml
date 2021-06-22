@@ -5,7 +5,7 @@
 
 #a trigger can be set for a specific branch or file.
 #trigger:
-trigger:
+pr:
   branches:
     include:
     - main
