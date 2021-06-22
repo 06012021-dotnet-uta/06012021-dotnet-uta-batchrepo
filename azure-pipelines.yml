@@ -4,16 +4,16 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 #a trigger can be set for a specific branch or file.
+#trigger:
 trigger:
   branches:
     include:
     - main
-#the below is required only if you have multiple .sln files in your repo.
   paths:
     include:
     - demos/RockPaperScissorsMvc
 
-#a resource on which you will build your app
+# a resource on which you will build your app
 pool:
   vmImage: 'windows-latest'
 
