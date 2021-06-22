@@ -13,7 +13,7 @@ pool:
 
 #variables that you can access during the build
 variables:
-  solution: '**/*.sln'
+  solution: 'demos/RockPaperScissorsMvc/RockPaperScissorsMvc/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
