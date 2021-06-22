@@ -23,58 +23,62 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-stages:
-- stage:
-  jobs:
-  - job:
-# yaml file have stages, steps, jobs, and tasks.
-    steps:
-      - task: NuGetToolInstaller@1
+- task: UseDotNet@2
+  displayName: 'Installing .NET Core SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '5.0.x'
 
-      - task: NuGetCommand@2
-        inputs:
-          restoreSolution: '$(solution)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration)'
 
-      - task: VSBuild@1
-        inputs:
-          solution: '$(solution)'
-          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
+#testing goes here
 
-      - task: VSTest@2
-        inputs:
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
-      - script: echo "this is a message"
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(solution))'
+    zipAfterPublish: true
 
-- stage:
-  displayName: Stage1
-  dependsOn: []
-  jobs:
-    - job:
-      steps:
-      - script: echo this is stage 1 The buildCongiuration is $(buildConfiguration).
-    - job:
-      steps:
-      - script: echo this is the second job for the first stage
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Project-3-Training(e37a1117-750a-4552-bb20-e84ed6f3c85d)'
+    appType: 'webApp'
+    WebAppName: '06012021BatchRpsGame'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
-- stage: stagesName
-  displayName: Stage2
-  dependsOn: []
-  jobs:
-  - job:
-    steps:
-    - script: echo this is stage2
+# - stage:
+#   displayName: Stage1
+#   dependsOn: []
+#   jobs:
+#     - job:
+#       steps:
+#       - script: echo this is stage 1 The buildCongiuration is $(buildConfiguration).
+#     - job:
+#       steps:
+#       - script: echo this is the second job for the first stage
 
-- stage:
-  displayName: Stage3
-  dependsOn: []
-  jobs:
-  - job:
-    steps:
-    - script: echo this is stage3
-  - job:
-    steps:
-    - script: echo this is the last job of the last stage
+# - stage: stagesName
+#   displayName: Stage2
+#   dependsOn: []
+#   jobs:
+#   - job:
+#     steps:
+#     - script: echo this is stage2
+
+# - stage:
+#   displayName: Stage3
+#   dependsOn: []
+#   jobs:
+#   - job:
+#     steps:
+#     - script: echo this is stage3
+#   - job:
+#     steps:
+#     - script: echo this is the last job of the last stage
 
