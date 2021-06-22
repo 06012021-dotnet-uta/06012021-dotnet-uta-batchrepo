@@ -24,11 +24,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Installing .NET Core SDK'
-  inputs:
-    packageType: 'sdk'
-    version: '5.0.x'
+# - task: UseDotNet@2
+#   displayName: 'Installing .NET Core SDK'
+#   inputs:
+#     packageType: 'sdk'
+#     version: '5.0.x'
 
 #this must go before the 'build' task.
 # - task: SonarCloudPrepare@1
@@ -40,6 +40,7 @@ steps:
 #     projectName: '03012021BatchPipelineDemo'
 
 - task: DotNetCoreCLI@2
+  displayName: building project
   inputs:
     command: 'build'
     projects: '$(solution)'
@@ -66,6 +67,7 @@ steps:
 #     pollingTimeoutSec: '300'
 
 - task: DotNetCoreCLI@2
+  displayName: publishing
   inputs:
     command: 'publish'
     publishWebProjects: false
