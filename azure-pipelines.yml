@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 #a trigger can be set for a specific branch or file.
-# trigger:
-pr:
+trigger:
+# pr:
   branches:
     include:
     - main
