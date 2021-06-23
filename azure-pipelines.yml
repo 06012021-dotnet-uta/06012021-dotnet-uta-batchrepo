@@ -6,9 +6,9 @@
 #a trigger can be set for a specific branch or file.
 #trigger:
 pr:
-  branches:
-    include:
-    - main
+  # branches:
+  #   include:
+  #   - main
   paths:
     include:
     - demos/RockPaperScissorsMvc
