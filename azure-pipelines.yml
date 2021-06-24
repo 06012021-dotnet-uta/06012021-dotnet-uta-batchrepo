@@ -40,12 +40,31 @@ steps:
 #     projectKey: '03012021Batch_03012021BatchPipelineDemo'
 #     projectName: '03012021BatchPipelineDemo'
 
+# ERASETHIS
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: '06012021Batch_test'
+    organization: '06012021batch'
+    scannerMode: 'MSBuild'
+    projectKey: '06012021batch_MvcGamePipeline'
+    projectName: 'MvcGamePipeline'
+
+#ERASE THIS
+
 - task: DotNetCoreCLI@2
   displayName: building project
   inputs:
     command: 'build'
     projects: '$(solution)'
     arguments: '--configuration $(buildConfiguration)'
+
+# ERASETHIS
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+#ERASE THIS
 
 #testing goes here
 # - task: DotNetCoreCLI@2
