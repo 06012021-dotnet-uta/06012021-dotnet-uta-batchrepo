@@ -46,7 +46,7 @@ steps:
     projects: '$(solution)'
     arguments: '--configuration $(buildConfiguration)'
 
-#testing goes here
+#testing goes here - the collect "Code Coverage" arg is necessary to report code coverage the Sonarcloud.
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
