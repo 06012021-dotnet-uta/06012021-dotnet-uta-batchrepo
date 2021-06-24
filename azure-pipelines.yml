@@ -53,7 +53,7 @@ steps:
     projects: '$(solution)'
     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
     testRunTitle: 'Dotnet tests running'
-    workingDirectory: 'emos/RockPaperScissorsMvc/RockPaperScissorsMvc'
+    workingDirectory: 'demos/RockPaperScissorsMvc/RockPaperScissorsMvc'
 
 
 #you MUST have this task to get test code coverage results.
