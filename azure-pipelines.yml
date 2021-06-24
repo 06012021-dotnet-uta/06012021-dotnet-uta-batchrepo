@@ -31,13 +31,13 @@ steps:
 #     version: '5.0.x'
 
 #this must go before the 'build' task.
-# - task: SonarCloudPrepare@1
-#   inputs:
-#     SonarCloud: '03012021BatchServiceToken1'
-#     organization: '03012021batch'
-#     scannerMode: 'MSBuild'
-#     projectKey: '03012021Batch_03012021BatchPipelineDemo'
-#     projectName: '03012021BatchPipelineDemo'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: '06012021Batch_SonarcloudToken'
+    organization: '06012021batch'
+    scannerMode: 'MSBuild'
+    projectKey: '06012021batch_MvcGamePipeline'
+    projectName: 'MvcGamePipeline'
 
 - task: DotNetCoreCLI@2
   displayName: building project
@@ -47,24 +47,26 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 #testing goes here
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'test'
-#     projects: 'Demos/JavaScriptWithDotnetAPI/memesaver/memesaver.sln'
-#     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
-#     testRunTitle: 'Dotnet tests running'
-#     workingDirectory: 'Demos/JavaScriptWithDotnetAPI/memesaver'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+    testRunTitle: 'Dotnet tests running'
+    workingDirectory: 'emos/RockPaperScissorsMvc/RockPaperScissorsMvc'
 
-# - task: PublishCodeCoverageResults@1
-#   inputs:
-#     codeCoverageTool: 'Cobertura'
-#     summaryFileLocation: '**/coburtura/coverage.xml'
 
-# - task: SonarCloudAnalyze@1
+#you MUST have this task to get test code coverage results.
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coburtura/coverage.xml'
 
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: DotNetCoreCLI@2
   displayName: publishing
