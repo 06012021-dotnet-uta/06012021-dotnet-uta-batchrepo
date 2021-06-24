@@ -59,6 +59,20 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 # ERASETHIS
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+    testRunTitle: 'dotnet tests running'
+    workingDirectory: 'demos/RockPaperScissorsMvc/RockPaperScissorsMvc'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coburtura/coverage.xml'
+
+
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
