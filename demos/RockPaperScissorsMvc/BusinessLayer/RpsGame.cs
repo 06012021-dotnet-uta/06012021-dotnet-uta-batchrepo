@@ -59,11 +59,11 @@ namespace BusinessLayer
 			List<PlayerDerivedClass> ps = null;
 			try
 			{
-				ps = _context.Players.ToList();
+				ps = await _context.Players.ToListAsync();
 			}
 			catch (ArgumentNullException ex)
 			{
-				Console.WriteLine($"There was a problem gettign the players list");
+				Console.WriteLine($"There was a problem getting the players list => {ex.Message}");
 			}
 			return ps;
 		}
