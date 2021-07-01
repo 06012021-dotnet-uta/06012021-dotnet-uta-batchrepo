@@ -72,7 +72,7 @@ namespace RpsGameApi.Controllers
 			//check that the model binding worked.
 			if (!ModelState.IsValid)
 			{
-				//RedirectToAction("Create");
+				RedirectToAction("Create");
 			}
 
 			// injecting the interface allows you to Mock the implementation in the testing suite.
@@ -80,7 +80,18 @@ namespace RpsGameApi.Controllers
 
 			if (myBool)
 			{
-				return Ok(myBool);
+				PlayerDerivedClass mockPlayer = new PlayerDerivedClass()
+				{
+					City = "mycity",
+					Fname = "mark",
+					Lname = "moore",
+					MyAge = 12,
+					MyCountry = "usa",
+					PersonId = 100,
+					State = "tx",
+					Street = "123 main"
+				};
+				return Created("website.com/my/resource", mockPlayer);
 			}
 			else
 			{
