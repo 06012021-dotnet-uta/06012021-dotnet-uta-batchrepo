@@ -84,7 +84,7 @@ namespace RpsGameApi.Controllers
 			}
 			else
 			{
-				return NotFound($"This action was not successful. It was {false}.");
+				return NotFound($"This action was not successful. It was {myBool}.");
 			}
 		}
 	}//EoC
