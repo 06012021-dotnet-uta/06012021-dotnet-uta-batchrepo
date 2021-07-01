@@ -35,3 +35,42 @@ request.open('GET', 'http://api.icndb.com/jokes/random', true);
 
 // send the request
 request.send();
+
+
+//NOW for a POST request
+var request2 = new XMLHttpRequest();
+
+request2.onreadystatechange = () => {
+    console.log(`the readyState is => ${request2.readyState}`);
+    if (request2.readyState == 4) {// first, check that the request is finished
+        // check that the request was successfull
+        if (request2.status >= 200 && request2.status < 300) {
+            console.log('hey Mark. maybe you aren\'t so lazy afterall.');
+            console.log(`${request2.responseText}`);
+            console.log(`${request2.response}`);
+            var player = JSON.parse(request2.response);
+            console.log(`${player.street}, ${player.fname}, ${player.lname}`);
+        }
+        else {
+            console.log('the request was not successful');
+        }
+    }
+}
+
+request2.open('POST', 'https://localhost:44335/api/RpsGame/CreateNewPlayer', true);
+
+request2.setRequestHeader("Content-Type", "application/json");
+//add other header here
+
+//create the player to send in the body
+var player = {
+    fname: "Baby",
+    lname: "Hewey",
+    myCountry: "Disney",
+    street: "123 Main",
+    state: "cali-for-ah-aeeee",
+    city: "Burbank",
+    myAge: 100
+}
+
+request2.send(JSON.stringify(player));

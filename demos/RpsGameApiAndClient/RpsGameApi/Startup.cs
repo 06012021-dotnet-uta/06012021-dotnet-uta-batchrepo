@@ -29,16 +29,16 @@ namespace RpsGameApi
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddCors((options) =>
-			{
-				options.AddPolicy(name: "dev", builder =>
-				{
-					builder.WithOrigins("http://127.0.0.1:5500")
-					.AllowAnyHeader()
-					.AllowAnyMethod();
-				});
-			});
-				services.AddControllers();
+            services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                    builder.WithOrigins("http://127.0.0.1:5500")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+            services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "RpsGameApi", Version = "v1" });
@@ -67,10 +67,10 @@ namespace RpsGameApi
 
 			app.UseRouting();
 
-			//use useCores must go here.
-			app.UseCors("dev");
+            //use useCores must go here. PLACEMENT IS IMPORTANT
+            app.UseCors("dev");
 
-			app.UseAuthorization();
+            app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
