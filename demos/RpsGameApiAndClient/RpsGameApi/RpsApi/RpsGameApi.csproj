@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RockPaperScissorsMvc\BusinessLayer\BusinessLayer.csproj" />
-    <ProjectReference Include="..\..\RockPaperScissorsMvc\ModelsLibrary\ModelsLibrary.csproj" />
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>
