@@ -30,9 +30,11 @@
 <br>
 <input [(ngModel)]="something" type="text" placeholder="{{something3}}">
 
+
+<!-- you can format input, too -->
 <ol>
     <li *ngFor="let p of people">
-        {{p.name1}} is {{p.age}} and live in {{p.country}}
+        {{p.name1 | uppercase}} is {{p.age | number:'4.1-5'}} and live in {{p.country}}
     </li>
 </ol>
 
