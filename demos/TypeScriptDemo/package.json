@@ -1,0 +1,17 @@
+{
+  "name": "typescriptdemo",
+  "version": "1.0.0",
+  "description": "It's a-maya typescripta a-demoah",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "mark": "echo \"this is a command\""
+  },
+  "keywords": [],
+  "author": "mark",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}

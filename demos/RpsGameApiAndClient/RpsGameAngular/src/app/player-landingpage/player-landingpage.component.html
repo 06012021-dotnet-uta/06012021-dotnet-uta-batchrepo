@@ -1,0 +1,45 @@
+<p>player-landingpage works!</p>
+<div class="div1">
+    {{pageTitle}}
+</div>
+<br>
+<!-- you can bind a keyboard or mouse event to a function in the .ts class -->
+<input (keyup)="Input1Func($event)" type="text" name="input1" id="input1">
+<h3>{{input1}}</h3>
+
+<!-- You can create variables just insid eth ehtml for passing values, etc -->
+<input type="text" #input11 (keyup)="input1 = input11.value">
+
+<div [class.div1]="clicked" (mouseover)="Clickt()">
+    <h3>
+        Have I been clicked?
+    </h3>
+</div>
+
+<textarea (mouseenter)="textAreaFunc($event)" cols="30" rows="10">ldjsjds</textarea>
+{{sx}},{{sy}}
+
+<!-- <input [(ngModel)]="input22" placeholder="{{input2}}">
+{{input22}} -->
+<!-- {{input2}}
+<input [(ngModel)]="input2" type="text" placeholder="{{input22}}"> -->
+<br>
+<input [(ngModel)]="something3" type="text" placeholder="{{something}}">
+<br>
+{{something3}}
+<br>
+<input [(ngModel)]="something" type="text" placeholder="{{something3}}">
+
+<ol>
+    <li *ngFor="let p of people">
+        {{p.name1}} is {{p.age}} and live in {{p.country}}
+    </li>
+</ol>
+
+Put the max age for the filter: <input type="text" #maxAge (keyup)=MaxAgeFunc(maxAge.value)>
+
+<ul *ngFor="let p of people">
+    <li *ngIf="p.age < maxAge1">
+        {{p.name1}}, {{p.age}}
+    </li>
+</ul>
