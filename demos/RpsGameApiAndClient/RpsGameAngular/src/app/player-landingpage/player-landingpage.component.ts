@@ -15,8 +15,11 @@ export class PlayerLandingpageComponent implements OnInit {
   sy: number = 0;
   input2: any;
   input22: any;
-  something3: string = '';
-  something: string = '';
+  something3: string = 'something3';
+  something: string = 'something';
+  something4?: string;
+  passTochildVar?: string;
+  valuePassedFromChild?: string;
   people: Person[] = [
     { name1: 'Dr Nice', age: 10, country: 'USA' },
     { name1: 'Alex', age: 15, country: 'USA' },
@@ -61,6 +64,18 @@ export class PlayerLandingpageComponent implements OnInit {
 
   MaxAgeFunc(age: string): void {
     this.maxAge1 = Number(age);
+  }
+
+  DispayIfChanged(s: string): void {
+    this.something4 = s;
+  }
+
+  PassToChildFunc(p: string): void {
+    this.passTochildVar = p;
+  }
+
+  GetEventEmitted(event: string): void {
+    this.valuePassedFromChild = event;
   }
 
 }
