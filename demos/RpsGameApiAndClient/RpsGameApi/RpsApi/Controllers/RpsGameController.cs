@@ -76,26 +76,26 @@ namespace RpsGameApi.Controllers
 			}
 
 			// injecting the interface allows you to Mock the implementation in the testing suite.
-			bool myBool = await _rpsGame.RegisterPlayerAsync(p);
+			PlayerDerivedClass newPlayer = await _rpsGame.RegisterPlayerAsync(p);
 
-			if (myBool)
+			if (newPlayer != null)
 			{
-				PlayerDerivedClass mockPlayer = new PlayerDerivedClass()
-				{
-					City = "mycity",
-					Fname = "mark",
-					Lname = "moore",
-					MyAge = 12,
-					MyCountry = "usa",
-					PersonId = 100,
-					State = "tx",
-					Street = "123 main"
-				};
-				return Created("website.com/my/resource", mockPlayer);
+				//PlayerDerivedClass mockPlayer = new PlayerDerivedClass()
+				//{
+				//	City = "mycity",
+				//	Fname = "mark",
+				//	Lname = "moore",
+				//	MyAge = 12,
+				//	MyCountry = "usa",
+				//	PersonId = 100,
+				//	State = "tx",
+				//	Street = "123 main"
+				//};
+				return Created("website.com/this/method/doesnt/exist/yet", newPlayer);
 			}
 			else
 			{
-				return NotFound($"This action was not successful. It was {myBool}.");
+				return NotFound($"This add a player action was not successful.");
 			}
 		}
 	}//EoC

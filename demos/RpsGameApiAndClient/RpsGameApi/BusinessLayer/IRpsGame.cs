@@ -9,7 +9,7 @@ namespace BusinessLayer
 {
 	public interface IRpsGame
 	{
-		Task<bool> RegisterPlayerAsync(PlayerDerivedClass p);
+		Task<PlayerDerivedClass> RegisterPlayerAsync(PlayerDerivedClass p);
 		Task<List<PlayerDerivedClass>> PlayerListAsync();
 	}
 }
