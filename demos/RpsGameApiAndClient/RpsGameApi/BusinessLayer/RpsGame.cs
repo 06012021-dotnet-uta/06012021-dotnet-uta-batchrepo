@@ -33,7 +33,7 @@ namespace BusinessLayer
 		/// </summary>
 		/// <param name="p"></param>
 		/// <returns></returns>
-		public async Task<bool> RegisterPlayerAsync(PlayerDerivedClass p)
+		public async Task<PlayerDerivedClass> RegisterPlayerAsync(PlayerDerivedClass p)
 		{
 			//create a try/catch to save the player
 			await _context.Players.AddAsync(p);
@@ -44,14 +44,24 @@ namespace BusinessLayer
 			catch (DbUpdateConcurrencyException ex)
 			{
 				Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
-				return false;
+				return null;
 			}
 			catch (DbUpdateException ex)
 			{       //change this to logging
 				Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
-				return false;
+				return null;
 			}
-			return true;
+
+			var x1 = await _context.Players.MaxAsync(x => x.PersonId);
+			PlayerDerivedClass p1 = await _context.Players.Where(x => x.PersonId == x1).FirstOrDefaultAsync();
+			if(p1 == null)
+            {
+				return null;
+            }
+            else
+            {
+				return p1;
+            }
 		}
 
 		public async Task<List<PlayerDerivedClass>> PlayerListAsync()

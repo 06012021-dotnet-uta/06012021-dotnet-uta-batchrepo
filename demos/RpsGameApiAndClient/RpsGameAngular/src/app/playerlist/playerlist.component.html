@@ -9,11 +9,15 @@
 <div *ngIf="playerArr">
     <ul>
         <li *ngFor="let p of playerArr">
-            {{p.personid}} - {{p.fname}} - {{p.lname}} - {{p.myage | number:'3.2-7'}}
-            <button (click)="PlayerDetails(p.personid)">Details</button>
+            id is {{p.personId}} - {{p.fname}} - {{p.lname}} - {{p.myage | number:'3.2-7'}} - {{p.myCountry}}
+            <button (click)="PlayerDetails(p.personId)">Details</button>
         </li>
     </ul>
 </div>
 
 <!-- nest the child component here -->
 <app-playerdetails [player]="chosenPlayer"></app-playerdetails>
+
+<!-- nest add a player component here -->
+<button (click)="showAddplayer = true">Add a New player</button>
+<app-addplayer *ngIf="showAddplayer" (playerevent)="AddPlayerParent($event)"></app-addplayer>

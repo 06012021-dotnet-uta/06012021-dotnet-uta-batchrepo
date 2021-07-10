@@ -33,7 +33,7 @@ namespace RpsGame.Tests
 				State = "Oklahoma",
 				Street = "321 niam"
 			};
-			bool result = false;
+			PlayerDerivedClass pdc12;
 			PlayerDerivedClass pdc1;
 
 			using (var context = new RpsGameDb(options))
@@ -56,7 +56,7 @@ namespace RpsGame.Tests
 
 				//instantiate the RpsGameClass that we are going to unit test
 				BRpsGame rpsGame = new BRpsGame(context);
-				result = await rpsGame.RegisterPlayerAsync(pdc);
+				pdc12 = await rpsGame.RegisterPlayerAsync(pdc);
 
 				context.SaveChanges();
 				//}
@@ -68,7 +68,7 @@ namespace RpsGame.Tests
 				int amt = await context.Players.CountAsync();
 				pdc.PersonId = 1;
 				var p = context.Players.Where(x => x.Fname == "Fname").FirstOrDefault();
-				Assert.True(result);
+				//Assert.True(result);
 				Assert.Equal(1, amt);
 				Assert.NotNull(p);
 				Assert.Contains(pdc1, context.Players);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../person';
+
 @Component({
   selector: 'app-player-landingpage',
   templateUrl: './player-landingpage.component.html',

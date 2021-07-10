@@ -1,8 +1,8 @@
 export interface Player {
-    personid: number;
+    personId: number;
     fname: string;
     lname: string;
-    mycountry: string;
+    myCountry: string;
     street: string;
     state: string;
     city?: string;
