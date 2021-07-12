@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 using RepositoryLayer;
+using RpsGameApi.Controllers;
 using Xunit;
+using FluentAssertions;
 //you can give the page an alias to differentiate between ambiguously named duos.
 using BRpsGame = BusinessLayer.RpsGame;
 
@@ -76,5 +81,84 @@ namespace RpsGame.Tests
 
 			}
 		}
+
+
+		//make a test that will isolate a controller method to test specifically it's functionality
+		[Fact]
+		public async Task PlayerListAsyncReturnsAListOfPlayers()
+		{
+			//arrange
+			//get an instance of my mocked class to inject into the Business layer.
+			IRpsGame mockRpsGame = new MockRpsGame();
+			RpsGameController controller = new RpsGameController(mockRpsGame);
+			PlayerDerivedClass mockPlayer1 = new PlayerDerivedClass()
+			{
+				City = "mycity",
+				Fname = "mark",
+				Lname = "moore",
+				MyAge = 12,
+				MyCountry = "usa",
+				PersonId = 100,
+				State = "tx",
+				Street = "123 main"
+			};
+			PlayerDerivedClass mockPlayer2 = new PlayerDerivedClass()
+			{
+				City = "yourcity",
+				Fname = "Jenny",
+				Lname = "FromThaBlock",
+				MyAge = 18,
+				MyCountry = "Cali",
+				PersonId = 101,
+				State = "California",
+				Street = "8675309 S. Main St."
+			};
+			List<PlayerDerivedClass> mockList1 = new List<PlayerDerivedClass>();
+			mockList1.Add(mockPlayer1);
+			mockList1.Add(mockPlayer2);
+
+			//act
+			IEnumerable<PlayerDerivedClass> result = await controller.PlayerList();
+			//var result = controller.PlayerList();
+
+			var x = result.Where(x => x.Fname == "Jenny").FirstOrDefault();
+			var y = mockList1.Where(x => x.Fname == "Jenny").FirstOrDefault();
+
+			//assert
+			// Assert.Equal(mockList1, result);
+			// Assert.Equal(y, x);
+			//Assert.Equal(y.Fname, x.Fname);
+			//Assert.True(result.Equals(mockList1));
+			Assert.True(y.Fname.Equals(x.Fname));
+		}
+
+		[Fact]
+		public async Task RegisterPlayerAsyncReturnsAPlayer()
+		{
+			//arrange
+			IRpsGame mockRpsGame = new MockRpsGame();
+			RpsGameController controller = new RpsGameController(mockRpsGame);
+			PlayerDerivedClass mockPlayer2 = new PlayerDerivedClass()
+			{
+				City = "yourcity",
+				Fname = "Jenny",
+				Lname = "FromThaBlock",
+				MyAge = 18,
+				MyCountry = "Cali",
+				PersonId = 101,
+				State = "California",
+				Street = "8675309 S. Main St."
+			};
+			//act
+			var result = await controller.CreateNewPlayer(mockPlayer2);
+			var result1 = (CreatedResult)result.Result;
+			var result2 = result1.Value;
+
+			//assert
+			// using FluentAssertions here to evaluate the objects values bc xunit has no such method.
+			result2.Should().BeEquivalentTo(mockPlayer2);
+
+		}
+
 	}
 }

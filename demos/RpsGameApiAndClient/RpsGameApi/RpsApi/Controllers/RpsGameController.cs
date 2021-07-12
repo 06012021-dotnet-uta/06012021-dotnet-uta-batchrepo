@@ -18,6 +18,12 @@ namespace RpsGameApi.Controllers
 		private readonly ILogger<RpsGameController> _logger;
 
 		private readonly IRpsGame _rpsGame;
+
+		//this overloaded constructor is used for testing only.
+		public RpsGameController(IRpsGame rpsGame)
+		{
+			this._rpsGame = rpsGame;
+		}
 		//create a constructor into which i'll inject the business layer.
 		public RpsGameController(IRpsGame rpsGame, ILogger<RpsGameController> logger)
 		{
@@ -67,12 +73,12 @@ namespace RpsGameApi.Controllers
 		}
 
 		[HttpPost("CreateNewPlayer")]
-		public async Task<ActionResult> CreateNewPlayer(PlayerDerivedClass p)
+		public async Task<ActionResult<PlayerDerivedClass>> CreateNewPlayer(PlayerDerivedClass p)
 		{
 			//check that the model binding worked.
 			if (!ModelState.IsValid)
 			{
-				RedirectToAction("Create");
+				return BadRequest("ModelBinding didn't work.");
 			}
 
 			// injecting the interface allows you to Mock the implementation in the testing suite.
@@ -80,18 +86,7 @@ namespace RpsGameApi.Controllers
 
 			if (newPlayer != null)
 			{
-				//PlayerDerivedClass mockPlayer = new PlayerDerivedClass()
-				//{
-				//	City = "mycity",
-				//	Fname = "mark",
-				//	Lname = "moore",
-				//	MyAge = 12,
-				//	MyCountry = "usa",
-				//	PersonId = 100,
-				//	State = "tx",
-				//	Street = "123 main"
-				//};
-				return Created("website.com/this/method/doesnt/exist/yet", newPlayer);
+				return Created("website.com/this/route/doesnt/exist/yet", newPlayer);
 			}
 			else
 			{
