@@ -35,7 +35,7 @@ describe('PlayerlistComponent', () => {
   // });
 
   it('should use ngOnInit to get the player list.', () => {
-    expect(component.playerArr?.length).toBeGreaterThan(7);
+    expect(component.playerArr?.length).toBe(8);
   });
 
   it('should use ngOnInit to get the player list.', () => {
@@ -47,7 +47,7 @@ describe('PlayerlistComponent', () => {
   it('PlayerDetails should display the requested player', () => {
     expect(component.chosenPlayer).toBeFalsy;
     component.PlayerDetails(mockPlayerList[3].personId);
-    expect(component.chosenPlayer?.myCountry).toContain('S' || 's');
+    expect(component.chosenPlayer?.myCountry).toContain('S');
   });
 
   it('should order the PlayerArray by age asc', () => {
