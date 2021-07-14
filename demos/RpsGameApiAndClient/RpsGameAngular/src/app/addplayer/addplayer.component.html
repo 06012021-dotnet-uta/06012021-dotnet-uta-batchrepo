@@ -1,24 +1,61 @@
 <p>addplayer works!</p>
+<h1>Below is the Template Version of the Add a player form</h1>
+<!-- <div>
+  <label for="fname">First Name:</label>
+  <input type="text" [(ngModel)]="newPlayer.fname" name="fname" placeholder="first name">
 
-<label for="fname">First Name:</label>
-<input type="text" [(ngModel)]="newPlayer.fname" name="fname" placeholder="first name">
+  <label for="lname">Last Name:</label>
+  <input type="text" [(ngModel)]="newPlayer.lname" name="lname" placeholder="last name">
 
-<label for="lname">Last Name:</label>
-<input type="text" [(ngModel)]="newPlayer.lname" name="lname" placeholder="last name">
+  <label for="myCountry">Country:</label>
+  <input type="text" [(ngModel)]="newPlayer.myCountry" name="myCountry" placeholder="country">
 
-<label for="myCountry">Country:</label>
-<input type="text" [(ngModel)]="newPlayer.myCountry" name="myCountry" placeholder="country">
+  <label for="street">Street:</label>
+  <input type="text" [(ngModel)]="newPlayer.street" name="street" placeholder="street">
 
-<label for="street">Street:</label>
-<input type="text" [(ngModel)]="newPlayer.street" name="street" placeholder="street">
+  <label for="state">State:</label>
+  <input type="text" [(ngModel)]="newPlayer.state" name="state" placeholder="state">
 
-<label for="state">State:</label>
-<input type="text" [(ngModel)]="newPlayer.state" name="state" placeholder="state">
+  <label for="city">City:</label>
+  <input type="text" [(ngModel)]="newPlayer.city" name="city" placeholder="city">
 
-<label for="city">City:</label>
-<input type="text" [(ngModel)]="newPlayer.city" name="city" placeholder="city">
+  <label for="myage">Your Age:</label>
+  <input type="number" [(ngModel)]="newPlayer.myage" name="myage" placeholder="your age">
+  <br><br>
+  <button (click)="AddNewPlayer()">Submit this new player!</button>
 
-<label for="myage">Your Age:</label>
-<input type="number" [(ngModel)]="newPlayer.myage" name="myage" placeholder="your age">
-<br><br>
-<button (click)="AddNewPlayer()">Submit this new player!</button>
+</div> -->
+
+
+<h1>Below is the Reactive Version of the above form</h1>
+<form [formGroup]="playerForm" (ngSubmit)="PlayerReactiveFormSubmit($event)">
+  <label for="fname">First Name:</label>
+  <input type="text" name="fname" placeholder="first name" formControlName="fname" class="form-control">
+  <div *ngIf="playerForm.controls.fname.errors?.minlength">
+    <h6>This input requires at least 3 characters</h6>
+  </div>
+  <div *ngIf="playerForm.controls.fname.errors?.maxlength">
+    <h6>This input requires no more than 20 characters</h6>
+  </div>
+  <br>
+  <label for="lname">Last Name:</label>
+  <input type="text" name="lname" placeholder="last name" formControlName="lname" class="form-control">
+  <br>
+  <label for="myCountry">Country:</label>
+  <input type="text" name="myCountry" placeholder="country" formControlName="myCountry" class="form-control">
+  <br>
+  <label for="street">Street:</label>
+  <input type="text" name="street" placeholder="street" formControlName="street" class="form-control">
+  <br>
+  <label for="state">State:</label>
+  <input type="text" name="state" placeholder="state" formControlName="state" class="form-control">
+  <br>
+  <label for="city">City:</label>
+  <input type="text" name="city" placeholder="city" formControlName="city" class="form-control">
+  <br>
+  <label for="myage">Your Age:</label>
+  <input type="number" name="myage" placeholder="your age" formControlName="myage" class="form-control">
+  <br><br>
+  <button type="submit">Submit</button>
+</form>
+<!-- <button (click)="AddNewPlayer()">Submit this new player!</button> -->

@@ -70,5 +70,12 @@ export class PlayerlistComponent implements OnInit {
     // );
   }
 
+  ReturnsThree(): number {
+    return 3;
+  }
+
+  ReturnsThreePlusThree(): number {
+    return (3 + this.ReturnsThree());
+  }
 
 }
