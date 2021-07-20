@@ -1,0 +1,15 @@
+version: '1.0'
+services:
+  rpsapi:
+    #build: ./RpsGameAnGular/
+    image: rpsapiimage
+    ports: 
+    - "5001:80"
+    environment: 
+    - ConnectionStrings__AzureDb=Server=tcp:06012021batch-sqldb.database.windows.net,1433;Initial Catalog=06012021BatchDb;Persist Security Info=False;User ID=batch06012021;Password=06012021Batch;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+  rpsangular:
+    image: rpsangularimage
+    ports:
+    - "8081:80"
+
+

@@ -9,7 +9,9 @@ import { mockPlayerList } from './playerlist/MockPlayerList';
 })
 
 export class PlayerserviceService {
-  url: string = 'https://localhost:5001/api/RpsGame/';
+  //url: string = 'https://localhost:5001/api/RpsGame/';
+  url: string = 'http://localhost:5001/api/RpsGame/';
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -20,7 +22,7 @@ export class PlayerserviceService {
   GetPlayerlist(): Observable<Player[]> {
     //returnthe MockPlayerList
     //return of(mockPlayerList);
-    return this.http.get<Player[]>('https://localhost:5001/api/RpsGame/PlayerList');
+    return this.http.get<Player[]>(`${this.url}PlayerList`);
   }
 
   AddPlayer(p: Player): Observable<Player> {
