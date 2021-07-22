@@ -1,13 +1,14 @@
 version: '1.0'
 services:
   rpsgameapicontainer:
-    #build: ./RpsGameApi
-    image: rpsgmeapiimage
+    build: ./RpsGameApi
+    image: rpsgameapiimage
     ports: 
     - "5001:80"
     environment: 
     - ConnectionStrings__AzureDb=Server=tcp:06012021batch-sqldb.database.windows.net,1433;Initial Catalog=06012021BatchDb;Persist Security Info=False;User ID=batch06012021;Password=06012021Batch;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
   rpsgameangularcontainer:
+    build: ./RpsGameAngular
     image: rpsgameangularimage
     ports:
     - "4200:80"
